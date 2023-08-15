@@ -9,7 +9,7 @@ on:
 
 env:
 
-  TESTING_SCOPE:"tests.UserRegistrationTest.java"
+  TESTING_SCOPE:"tests.UserRegistrationTest"
 
 
 
