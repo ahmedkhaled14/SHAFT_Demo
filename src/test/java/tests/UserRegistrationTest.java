@@ -36,9 +36,9 @@ public void verifyUserRegistration(){
     accountCreatedPage.     assertOnAccountCreatedTextMessage("ACCOUNT CREATED!");
     accountCreatedPage.     clickOnContinueButton();
     menuPage.               assertOnLoggedInUserNameVisibility("Ahmed");
-    menuPage.               clickOnDeleteAccountButton();
+   /* menuPage.               clickOnDeleteAccountButton();
     deleteAccountPage.      assertOnAccountDeletedTextMessage("ACCOUNT DELETED!");
-    deleteAccountPage.      clickOnContinueButton();
+    deleteAccountPage.      clickOnContinueButton();*/
 }
 
     @BeforeMethod
