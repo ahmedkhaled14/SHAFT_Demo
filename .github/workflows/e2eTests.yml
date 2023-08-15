@@ -1,0 +1,70 @@
+name: E2E Tests
+
+
+on:
+
+  workflow_dispatch:
+
+
+
+env:
+
+  TESTING_SCOPE:""
+
+
+
+jobs:
+
+  Windows_Edge_Local:
+
+    runs-on: windows-latest
+
+    steps:
+
+      - name: Checkout Code
+
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+
+        uses: actions/setup-java@v3
+
+        with:
+
+          java-version: '17'
+
+          distribution: 'zulu'
+
+          cache: 'maven'
+
+          check-latest: true
+
+      - name: Run tests
+
+        continue-on-error: true
+
+        run: mvn -e test "-DexecutionAddress=local" "-DtargetOperatingSystem=WINDOWS" "-DtargetBrowserName=MicrosoftEdge" "-DheadlessExecution=true" "-DgenerateAllureReportArchive=true" "-Dtest=${TESTING_SCOPE}"
+
+      - name: Upload Allure Report as Pipeline Artifact
+
+        if: always()
+
+        uses: actions/upload-artifact@v3
+
+        with:
+
+          name: Windows_Edge_Local_Allure
+
+          path: "generatedReport_*.zip"
+
+      - name: Upload Execution Summary Report as Pipeline Artifact
+
+        if: always()
+
+        uses: actions/upload-artifact@v3
+
+        with:
+
+          name: Windows_Edge_Local_Summary
+
+          path: "execution-summary/ExecutionSummaryReport_*.html"
