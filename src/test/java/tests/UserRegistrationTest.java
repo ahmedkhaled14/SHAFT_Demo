@@ -1,3 +1,5 @@
+package tests;
+
 import com.shaft.driver.SHAFT;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
