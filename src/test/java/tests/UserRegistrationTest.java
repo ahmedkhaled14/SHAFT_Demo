@@ -1,11 +1,21 @@
 package tests;
 
 import com.shaft.driver.SHAFT;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.*;
 import utils.Helper;
 
-public class UserRegistrationTest extends TestConfigurations {
+public class UserRegistrationTest   {
+    SHAFT.GUI.WebDriver driver;
+    HomePage homePage;
+    LoginPage loginPage;
+    SignupPage signupPage;
+    AccountCreatedPage accountCreatedPage;
+    MenuPage menuPage;
+    DeleteAccountPage deleteAccountPage;
     SHAFT.TestData.JSON homeTestData = new SHAFT.TestData.JSON("homePageTestData.json");
     @BeforeClass
     public void beforeClass(){
@@ -30,4 +40,21 @@ public void verifyUserRegistration(){
     deleteAccountPage.      assertOnAccountDeletedTextMessage("ACCOUNT DELETED!");
     deleteAccountPage.      clickOnContinueButton();
 }
+
+    @BeforeMethod
+    public void setUp() {
+        driver = new SHAFT.GUI.WebDriver();
+        homePage = new HomePage(driver);
+        homePage.navigate();
+        loginPage = new LoginPage(driver);
+        signupPage = new SignupPage(driver);
+        accountCreatedPage = new AccountCreatedPage(driver);
+        menuPage = new MenuPage(driver);
+        deleteAccountPage = new DeleteAccountPage(driver);
+    }
+
+    @AfterMethod
+    public void tearDown() {
+        driver.quit();
+    }
 }
