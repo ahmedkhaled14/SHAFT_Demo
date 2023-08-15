@@ -17,10 +17,6 @@ public class UserRegistrationTest   {
     MenuPage menuPage;
     DeleteAccountPage deleteAccountPage;
     SHAFT.TestData.JSON homeTestData = new SHAFT.TestData.JSON("homePageTestData.json");
-    @BeforeClass
-    public void beforeClass(){
-        SHAFT.Properties.reporting.set().openAllureReportAfterExecution(true);
-    }
 
 @Test(description = "verify user registration ")
 public void verifyUserRegistration(){

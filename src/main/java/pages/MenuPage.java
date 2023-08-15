@@ -1,6 +1,7 @@
 package pages;
 
 import com.shaft.driver.SHAFT;
+import com.shaft.gui.browser.internal.JavaScriptWaitManager;
 import org.openqa.selenium.By;
 
 public class MenuPage {
@@ -29,6 +30,7 @@ public class MenuPage {
     }
 
     public void assertOnLoggedInUserNameVisibility(String signUpName) {
+        JavaScriptWaitManager.waitForLazyLoading();
         driver.element().assertThat(LoggedInUserName).text().isEqualTo("Logged in as "+signUpName).perform();
     }
 
