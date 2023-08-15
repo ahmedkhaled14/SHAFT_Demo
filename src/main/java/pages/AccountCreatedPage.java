@@ -10,7 +10,6 @@ public class AccountCreatedPage {
     private final By continue_button = By.xpath("//a[@data-qa='continue-button']");
 
     SHAFT.GUI.WebDriver driver;
-    SoftAssert softAssert;
 
     public AccountCreatedPage(SHAFT.GUI.WebDriver driver) {
         this.driver = driver;
