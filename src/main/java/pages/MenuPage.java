@@ -30,7 +30,6 @@ public class MenuPage {
     }
 
     public void assertOnLoggedInUserNameVisibility(String signUpName) {
-        JavaScriptWaitManager.waitForLazyLoading();
         driver.element().assertThat(LoggedInUserName).text().isEqualTo("Logged in as "+signUpName).perform();
     }
 

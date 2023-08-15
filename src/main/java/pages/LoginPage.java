@@ -29,7 +29,7 @@ public class LoginPage {
     }
 
     public void assertOnNewUserSignupText(String expected) {
- driver.element().assertThat(newUserSignupText).text().isEqualTo(expected).perform();
+        driver.element().assertThat(newUserSignupText).text().isEqualTo(expected).perform();
     }
 
 
