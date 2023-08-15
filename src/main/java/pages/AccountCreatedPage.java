@@ -2,7 +2,6 @@ package pages;
 
 import com.shaft.driver.SHAFT;
 import org.openqa.selenium.By;
-import org.testng.asserts.SoftAssert;
 
 public class AccountCreatedPage {
     private String url = "https://www.automationexercise.com/account_created";
