@@ -30,7 +30,7 @@ public void verifyUserRegistration(){
             "NY", "NY city", "12345", "121312314");
     accountCreatedPage.     assertOnAccountCreatedTextMessage("ACCOUNT CREATED!");
     accountCreatedPage.     clickOnContinueButton();
-   /* menuPage.               clickOnDeleteAccountButton();
+    /*menuPage.               clickOnDeleteAccountButton();
     deleteAccountPage.      assertOnAccountDeletedTextMessage("ACCOUNT DELETED!");
     deleteAccountPage.      clickOnContinueButton();*/
 }
