@@ -18,7 +18,7 @@ jobs:
           check-latest: true
       - name: Run tests
         continue-on-error: true
-        run: mvn test "-DexecutionAddress=local" "-DtargetOperatingSystem=WINDOWS" "-DtargetBrowserName=MicrosoftEdge" "-DheadlessExecution=true" "-DgenerateAllureReportArchive=true" "-Dtest=${TESTING_SCOPE}" "-DclickUsingJavascriptWhenWebDriverClickFails=true" "-DwhenToTakePageSourceSnapshot=FailuresOnly"
+        run: mvn -e test "-DwhenToTakePageSourceSnapshot=FailuresOnly" "-DclickUsingJavascriptWhenWebDriverClickFails=true" "-DexecutionAddress=local" "-DtargetOperatingSystem=WINDOWS" "-DtargetBrowserName=MicrosoftEdge" "-DheadlessExecution=true" "-DgenerateAllureReportArchive=true" "-Dtest=${TESTING_SCOPE}"
       - name: Upload Allure Report as Pipeline Artifact
         if: always()
         uses: actions/upload-artifact@v3
@@ -37,7 +37,7 @@ jobs:
         with:
           report_paths: 'target/surefire-reports/TEST-*.xml'
 
-  LINUX_Chrome_Local:
+  Liniux_Chrome_Local:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -51,22 +51,21 @@ jobs:
           check-latest: true
       - name: Run tests
         continue-on-error: true
-        run: mvn test "-DexecutionAddress=local" "-DtargetOperatingSystem=LINUX" "-DtargetBrowserName=Chrome" "-DheadlessExecution=true" "-DgenerateAllureReportArchive=true" "-Dtest=${TESTING_SCOPE}" "-DclickUsingJavascriptWhenWebDriverClickFails=true" "-DwhenToTakePageSourceSnapshot=FailuresOnly"
+        run: mvn -e test "-DwhenToTakePageSourceSnapshot=FailuresOnly" "-DclickUsingJavascriptWhenWebDriverClickFails=true" "-DexecutionAddress=local" "-DtargetOperatingSystem=LINUX" "-DtargetBrowserName=chrome" "-DheadlessExecution=true" "-DgenerateAllureReportArchive=true" "-Dtest=${TESTING_SCOPE}"
       - name: Upload Allure Report as Pipeline Artifact
         if: always()
         uses: actions/upload-artifact@v3
         with:
-          name: Windows_Edge_Local_Allure
+          name: Linux_Chrome_Local_Allure
           path: "generatedReport_*.zip"
       - name: Upload Execution Summary Report as Pipeline Artifact
         if: always()
         uses: actions/upload-artifact@v3
         with:
-          name: Windows_Edge_Local_Allure
+          name: Linux_Chrome_Local_Summary
           path: "execution-summary/ExecutionSummaryReport_*.html"
       - name: Publish Test Report
         uses: mikepenz/action-junit-report@v3
         if: success() || failure() # always run even if the previous step fails
         with:
           report_paths: 'target/surefire-reports/TEST-*.xml'
-
