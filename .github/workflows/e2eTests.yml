@@ -38,7 +38,7 @@ jobs:
           report_paths: 'target/surefire-reports/TEST-*.xml'
 
   LINUX_Chrome_Local:
-    runs-on: Ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
